@@ -9,7 +9,7 @@ pipeline {
 
         stage('Clone Main Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/sumrunsahabkhan/mern-ecommerce.git'
+                git branch: 'main', url: 'https://github.com/Atif-629/devops_assignment3.git'
             }
         }
 
@@ -52,7 +52,7 @@ pipeline {
                     echo "Running Selenium Tests..."
                     sudo docker run --rm \
                         --network=ci-network \
-                        -e BASE_URL="http://3.80.204.243:3005" \
+                        -e BASE_URL="http://100.28.230.27:3005" \
                         selenium-tests
                     '''
                 }
@@ -73,7 +73,7 @@ pipeline {
                 mail (
                     subject: "Tests PASSED: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                     body: "All tests passed.\nBuild: ${env.BUILD_URL}",
-                    to: "sumrunk568@gmail.com,qasimalik@gmail.com"
+                    to: "atifamin506@gmail.com,qasimalik@gmail.com"
                 )
             }
         }
@@ -83,7 +83,7 @@ pipeline {
                 mail (
                     subject: "Tests FAILED: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                     body: "Tests failed.\nBuild: ${env.BUILD_URL}",
-                    to: "sumrunk568@gmail.com,qasimalik@gmail.com"
+                    to: "atifamin506@gmail.com,qasimalik@gmail.com"
                 )
             }
         }
